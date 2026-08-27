@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SmartUpload.Sample.MainPage"
+             Title="Smart Upload">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+            <Label Text="Plugin.Maui.SmartUpload" FontSize="22" FontAttributes="Bold" />
+            <Label x:Name="StatusLabel" Text="Create a sample file or pick one, then start a chunked upload." />
+
+            <Label Text="Endpoint" FontAttributes="Bold" />
+            <Entry x:Name="EndpointEntry" Keyboard="Url" />
+
+            <HorizontalStackLayout Spacing="12">
+                <Label Text="Use tus.io" VerticalOptions="Center" />
+                <Switch x:Name="TusSwitch" IsToggled="True" Toggled="OnProtocolToggled" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="Create 1 MB file" Clicked="OnCreateFileClicked" />
+                <Button Text="Pick file" Clicked="OnPickFileClicked" />
+            </HorizontalStackLayout>
+
+            <Label x:Name="FileLabel" Text="No file selected." />
+
+            <Button Text="Enqueue and start" Clicked="OnEnqueueClicked" />
+
+            <Label Text="Sessions" FontAttributes="Bold" />
+            <Label x:Name="SessionsLabel" Text="None." />
+
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="Pause latest" Clicked="OnPauseClicked" />
+                <Button Text="Resume latest" Clicked="OnResumeClicked" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="Retry latest" Clicked="OnRetryClicked" />
+                <Button Text="Cancel latest" Clicked="OnCancelClicked" />
+            </HorizontalStackLayout>
+            <Button Text="Remove latest" Clicked="OnRemoveClicked" />
+
+            <Label Text="Log" FontAttributes="Bold" />
+            <Label x:Name="LogLabel" FontFamily="Courier" FontSize="12" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

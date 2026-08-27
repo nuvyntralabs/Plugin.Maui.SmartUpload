@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net10.0;net10.0-android;net10.0-ios</TargetFrameworks>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+
+		<RootNamespace>Plugin.Maui.SmartUpload</RootNamespace>
+		<AssemblyName>Plugin.Maui.SmartUpload</AssemblyName>
+		<PackageId>Plugin.Maui.SmartUpload</PackageId>
+		<Title>.NET MAUI SmartUpload Plugin</Title>
+		<Description>Resumable, chunked HTTP uploads for .NET MAUI on Android and iOS. Pause/resume, automatic retry with backoff, and session persistence across process restarts. Includes Content-Range and tus.io protocols.</Description>
+		<PackageTags>dotnet-maui;maui;upload;resumable;chunked;tus;retry;pause;resume;android;ios;http</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<Authors>NugetWorld</Authors>
+		<Company>NugetWorld</Company>
+		<Copyright>Copyright © NugetWorld</Copyright>
+		<Version>1.0.0</Version>
+		<PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts</PackageOutputPath>
+		<IsPackable>true</IsPackable>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<PackageReleaseNotes>Initial release: chunked, resumable uploads with retry, pause/resume, persistence, Content-Range, and tus.io support for Android and iOS.</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="Plugin.Maui.SmartUpload.Tests" />
+	</ItemGroup>
+
+</Project>
