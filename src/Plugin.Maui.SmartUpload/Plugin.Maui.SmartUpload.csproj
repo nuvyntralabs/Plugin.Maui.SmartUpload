@@ -26,14 +26,14 @@
 		<Authors>MauiEssentials</Authors>
 		<Company>MauiEssentials</Company>
 		<Copyright>Copyright © MauiEssentials</Copyright>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 		<PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts</PackageOutputPath>
 		<IsPackable>true</IsPackable>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<PackageReleaseNotes>LLM-friendly README, llms.txt, AGENTS.md, and improved NuGet title/tags for coding-agent discoverability.</PackageReleaseNotes>
+		<PackageReleaseNotes>Rebrand package metadata and catalog references to MauiEssentials.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
