@@ -26,14 +26,14 @@
 		<Authors>NugetWorld</Authors>
 		<Company>NugetWorld</Company>
 		<Copyright>Copyright © NugetWorld</Copyright>
-		<Version>1.0.0</Version>
+		<Version>1.0.1</Version>
 		<PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts</PackageOutputPath>
 		<IsPackable>true</IsPackable>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<PackageReleaseNotes>Initial release: chunked, resumable uploads with retry, pause/resume, persistence, Content-Range, and tus.io support for Android and iOS.</PackageReleaseNotes>
+		<PackageReleaseNotes>Include the Buy Me a Coffee support section in the package README.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
