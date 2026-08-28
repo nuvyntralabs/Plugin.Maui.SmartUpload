@@ -17,15 +17,15 @@
 		<PackageId>Plugin.Maui.SmartUpload</PackageId>
 		<Title>.NET MAUI SmartUpload — chunked resumable uploads</Title>
 		<Description>Resumable, chunked HTTP uploads for .NET MAUI on Android and iOS. Pause/resume, automatic retry with backoff, and session persistence across process restarts. Includes Content-Range and tus.io protocols.</Description>
-		<PackageTags>dotnet-maui;maui;maui-plugin;maui-utilities;cross-platform;android;ios;nuget;nugetworld;upload;resumable;chunked;tus;tus-io;retry;pause;resume;http;content-range</PackageTags>
+		<PackageTags>dotnet-maui;maui;maui-plugin;maui-utilities;cross-platform;android;ios;nuget;mauiessentials;upload;resumable;chunked;tus;tus-io;retry;pause;resume;http;content-range</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageProjectUrl>https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<Authors>NugetWorld</Authors>
-		<Company>NugetWorld</Company>
-		<Copyright>Copyright © NugetWorld</Copyright>
+		<Authors>MauiEssentials</Authors>
+		<Company>MauiEssentials</Company>
+		<Copyright>Copyright © MauiEssentials</Copyright>
 		<Version>1.0.2</Version>
 		<PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts</PackageOutputPath>
 		<IsPackable>true</IsPackable>

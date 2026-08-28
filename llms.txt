@@ -5,7 +5,7 @@ Resumable, chunked HTTP uploads for .NET MAUI. Pause/resume, automatic retry, an
 Repository: https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload
 NuGet: https://www.nuget.org/packages/Plugin.Maui.SmartUpload
 Paper: https://niladripadhy.vercel.app/opensource/plugin-maui-smart-upload
-Catalog: https://github.com/NiladriPadhy/NugetWorld
+Catalog: https://github.com/NiladriPadhy/MauiEssentials
 License: MIT
 
 ## Supported versions
