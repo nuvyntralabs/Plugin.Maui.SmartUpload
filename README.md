@@ -173,3 +173,12 @@ dotnet pack src/Plugin.Maui.SmartUpload/Plugin.Maui.SmartUpload.csproj -c Releas
 ```
 
 Packages are written to `artifacts/`.
+
+## Support
+
+> If this plugin saved you a weekend of native plumbing, consider buying me a coffee.
+> Your support keeps it maintained, documented, and free.
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/npadhy)
+
+This library stays open source. A coffee helps cover time for bug fixes, new features, and docs.
