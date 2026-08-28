@@ -15,9 +15,9 @@
 		<RootNamespace>Plugin.Maui.SmartUpload</RootNamespace>
 		<AssemblyName>Plugin.Maui.SmartUpload</AssemblyName>
 		<PackageId>Plugin.Maui.SmartUpload</PackageId>
-		<Title>.NET MAUI SmartUpload Plugin</Title>
+		<Title>.NET MAUI SmartUpload — chunked resumable uploads</Title>
 		<Description>Resumable, chunked HTTP uploads for .NET MAUI on Android and iOS. Pause/resume, automatic retry with backoff, and session persistence across process restarts. Includes Content-Range and tus.io protocols.</Description>
-		<PackageTags>dotnet-maui;maui;upload;resumable;chunked;tus;retry;pause;resume;android;ios;http</PackageTags>
+		<PackageTags>dotnet-maui;maui;maui-plugin;maui-utilities;cross-platform;android;ios;nuget;nugetworld;upload;resumable;chunked;tus;tus-io;retry;pause;resume;http;content-range</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageProjectUrl>https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload</PackageProjectUrl>
@@ -26,14 +26,14 @@
 		<Authors>NugetWorld</Authors>
 		<Company>NugetWorld</Company>
 		<Copyright>Copyright © NugetWorld</Copyright>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts</PackageOutputPath>
 		<IsPackable>true</IsPackable>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<PackageReleaseNotes>Include the Buy Me a Coffee support section in the package README.</PackageReleaseNotes>
+		<PackageReleaseNotes>LLM-friendly README, llms.txt, AGENTS.md, and improved NuGet title/tags for coding-agent discoverability.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>

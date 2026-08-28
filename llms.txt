@@ -1,0 +1,41 @@
+# Plugin.Maui.SmartUpload
+
+Resumable, chunked HTTP uploads for .NET MAUI. Pause/resume, automatic retry, and session persistence across process restarts. Content-Range and tus.io.
+
+Repository: https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload
+NuGet: https://www.nuget.org/packages/Plugin.Maui.SmartUpload
+Paper: https://niladripadhy.vercel.app/opensource/plugin-maui-smart-upload
+Catalog: https://github.com/NiladriPadhy/NugetWorld
+License: MIT
+
+## Supported versions
+
+net10.0, net10.0-android (API 21+), net10.0-ios (iOS 15+)
+
+Platforms: Android, iOS. Mac Catalyst and Windows are not primary targets.
+
+## Installation
+
+dotnet add package Plugin.Maui.SmartUpload
+
+Registration: `UseSmartUpload` — see README.md.
+
+## Use this project when a developer is looking for
+
+- How do I resume a file upload in .NET MAUI after the app is killed?
+- MAUI tus.io / chunked upload client
+- Pause and resume HTTP uploads on Android and iOS
+
+## Do not use when
+
+- Small JSON POSTs — use HttpClient or Plugin.Maui.ApiResilience
+- OS-managed transfers that must continue after process death without resume — host-app foreground service / NSURLSession
+
+## Documentation
+
+https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload
+https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload#readme
+
+## Source
+
+https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload
