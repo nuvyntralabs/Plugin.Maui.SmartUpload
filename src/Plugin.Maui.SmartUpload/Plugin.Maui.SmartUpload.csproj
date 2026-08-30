@@ -20,20 +20,20 @@
 		<PackageTags>dotnet-maui;maui;maui-plugin;maui-utilities;cross-platform;android;ios;nuget;mauiessentials;upload;resumable;chunked;tus;tus-io;retry;pause;resume;http;content-range</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageProjectUrl>https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/NiladriPadhy/Plugin.Maui.SmartUpload</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/nuvyntralabs/Plugin.Maui.SmartUpload</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/nuvyntralabs/Plugin.Maui.SmartUpload</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<Authors>MauiEssentials</Authors>
 		<Company>MauiEssentials</Company>
 		<Copyright>Copyright © MauiEssentials</Copyright>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 		<PackageOutputPath>$(MSBuildThisFileDirectory)..\..\artifacts</PackageOutputPath>
 		<IsPackable>true</IsPackable>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
-		<PackageReleaseNotes>Rebrand package metadata and catalog references to MauiEssentials.</PackageReleaseNotes>
+		<PackageReleaseNotes>Repository moved to nuvyntralabs. Package project and repository URLs updated.</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
