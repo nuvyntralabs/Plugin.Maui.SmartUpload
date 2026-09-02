@@ -23,6 +23,9 @@ static class RequestValidator
 		if (request.Endpoint.Scheme is not "http" and not "https")
 			throw new SmartUploadException(UploadError.InvalidRequest, "Endpoint must be an http or https URL.");
 
+		if (options.RequireHttps && request.Endpoint.Scheme != "https")
+			throw new SmartUploadException(UploadError.InvalidRequest, "Endpoint must be an https URL. Set RequireHttps to false to allow http.");
+
 		if (request.SessionId is { Length: > 0 })
 			ValidateSessionId(request.SessionId);
 

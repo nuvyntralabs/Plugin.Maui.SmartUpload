@@ -37,6 +37,29 @@ public sealed class RequestValidatorTests
 	}
 
 	[Fact]
+	public void Validate_RejectsHttp_WhenHttpsRequired()
+	{
+		var path = WriteTempFile("hello");
+		try
+		{
+			var request = new UploadRequest
+			{
+				FilePath = path,
+				Endpoint = new Uri("http://example.com/upload")
+			};
+
+			var ex = Assert.Throws<SmartUploadException>(() => RequestValidator.Validate(request, new SmartUploadOptions()));
+			Assert.Equal(UploadError.InvalidRequest, ex.Error);
+
+			RequestValidator.Validate(request, new SmartUploadOptions { RequireHttps = false });
+		}
+		finally
+		{
+			File.Delete(path);
+		}
+	}
+
+	[Fact]
 	public void ValidateSessionId_RejectsIllegalCharacters()
 	{
 		Assert.Throws<SmartUploadException>(() => RequestValidator.ValidateSessionId("bad id"));

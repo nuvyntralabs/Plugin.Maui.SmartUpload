@@ -37,6 +37,7 @@ builder
         options.DefaultChunkSize = 512 * 1024;
         options.MaxConcurrentUploads = 2;
         options.ResumeInterruptedOnStart = true;
+        options.RequireHttps = true;
         options.DefaultRetry = new RetryPolicy
         {
             MaxRetries = 5,
@@ -56,7 +57,7 @@ var client = SmartUpload.Current;
 var session = await client.EnqueueAsync(new UploadRequest
 {
     FilePath = photoPath,
-    Endpoint = new Uri("https://tusd.tusdemo.net/files/"),
+    Endpoint = new Uri("https://tusd.tusdemo.net/files/"), // http is rejected unless RequireHttps is false
     Protocol = UploadProtocolKind.Tus,
     Headers =
     {

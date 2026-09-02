@@ -63,6 +63,12 @@ public sealed class SmartUploadOptions
 
 	public ISmartUploadLogger? Logger { get; set; }
 
+	/// <summary>
+	/// When <c>true</c>, upload endpoints must use <c>https</c>. Default is <c>true</c>.
+	/// Set <c>false</c> only for local development over <c>http</c>.
+	/// </summary>
+	public bool RequireHttps { get; set; } = true;
+
 	internal int ResolveChunkSize(int? requested)
 	{
 		if (requested is int explicitSize)
