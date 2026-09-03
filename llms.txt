@@ -10,13 +10,13 @@ License: MIT
 
 ## Supported versions
 
-net10.0, net10.0-android (API 21+), net10.0-ios (iOS 15+)
+net10.0, net10.0-android (API 21+), net10.0-ios (iOS 15+), net10.0-maccatalyst (15+), net10.0-windows (10.0.17763+; packed on Windows)
 
-Platforms: Android, iOS. Mac Catalyst and Windows are not primary targets.
+Platforms: Android, iOS, Mac Catalyst, and Windows. The Windows TFM is included when the package is packed on Windows.
 
 ## Current release
 
-1.0.6 (3 September 2026). Upload endpoints must be https (RequireHttps = true). Set RequireHttps = false only for local development.
+1.0.7. Adds Mac Catalyst and Windows TFMs. 1.0.6 (3 September 2026) required https upload endpoints (RequireHttps = true). Set RequireHttps = false only for local development.
 
 ## Installation
 
@@ -28,7 +28,7 @@ Registration: `UseSmartUpload` — see README.md.
 
 - How do I resume a file upload in .NET MAUI after the app is killed?
 - MAUI tus.io / chunked upload client
-- Pause and resume HTTP uploads on Android and iOS
+- Pause and resume HTTP uploads on Android, iOS, Mac Catalyst, and Windows
 
 ## Do not use when
 

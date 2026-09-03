@@ -24,8 +24,18 @@ jobs:
     uses: nuvyntralabs/MauiEssentials/.github/workflows/plugin-ci.yml@main
     with:
       runner: macos-latest
-      frameworks: net10.0,net10.0-android,net10.0-ios
+      frameworks: net10.0,net10.0-android,net10.0-ios,net10.0-maccatalyst
       pack: true
       test: true
       install_workloads: true
       workloads: maui-android maui-ios maui-maccatalyst
+
+  windows:
+    uses: nuvyntralabs/MauiEssentials/.github/workflows/plugin-ci.yml@main
+    with:
+      runner: windows-latest
+      frameworks: net10.0,net10.0-windows
+      pack: true
+      test: true
+      install_workloads: true
+      workloads: maui-windows
