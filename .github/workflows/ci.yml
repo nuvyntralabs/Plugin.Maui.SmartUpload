@@ -20,8 +20,45 @@ permissions:
   contents: read
 
 jobs:
+  version-align:
+    name: Version alignment
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        shell: bash
+    outputs:
+      version: ${{ steps.check.outputs.version }}
+    steps:
+      - name: Checkout package repo
+        uses: actions/checkout@v4
+
+      - name: Fetch hub CI scripts
+        uses: actions/checkout@v4
+        with:
+          repository: nuvyntralabs/MauiEssentials
+          ref: main
+          path: .ci-tools
+
+      - name: Require matching packable package versions
+        id: check
+        run: |
+          set -euo pipefail
+          script=".github/scripts/check-versions.py"
+          if [ ! -f "$script" ]; then
+            script=".ci-tools/.github/scripts/check-versions.py"
+          fi
+          if [ ! -f "$script" ]; then
+            echo "::error::check-versions.py not found after hub checkout"
+            find .ci-tools -type f | sort | head -100
+            exit 1
+          fi
+          python3 "$script" --plugin-root .
+
   version-check:
     name: NuGet release
+    needs: [version-align]
+    if: success()
     runs-on: ubuntu-latest
     timeout-minutes: 10
     defaults:
@@ -58,6 +95,7 @@ jobs:
   test:
     name: Unit tests
     needs: [version-check]
+    if: success()
     uses: ./.github/workflows/plugin-ci.yml
     with:
       runner: ubuntu-latest
@@ -68,6 +106,7 @@ jobs:
 
   linux:
     needs: [test]
+    if: success()
     uses: ./.github/workflows/plugin-ci.yml
     with:
       runner: ubuntu-latest
@@ -77,6 +116,7 @@ jobs:
 
   macos:
     needs: [test]
+    if: success()
     uses: ./.github/workflows/plugin-ci.yml
     with:
       runner: macos-latest
@@ -88,6 +128,7 @@ jobs:
 
   windows:
     needs: [test]
+    if: success()
     uses: ./.github/workflows/plugin-ci.yml
     with:
       runner: windows-latest
@@ -100,6 +141,7 @@ jobs:
   publish:
     name: NuGet.org
     needs: [linux, macos, windows]
+    if: success()
     runs-on: ubuntu-latest
     timeout-minutes: 20
     defaults:
