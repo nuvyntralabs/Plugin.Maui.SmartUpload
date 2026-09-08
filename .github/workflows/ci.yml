@@ -18,6 +18,7 @@ concurrency:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   version-align:
@@ -139,15 +140,28 @@ jobs:
       workloads: maui-windows
 
   publish:
-    name: NuGet.org
+    name: nuget.org and GitHub Packages
     needs: [linux, macos, windows]
     if: success()
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
     defaults:
       run:
         shell: bash
     steps:
+      - name: Checkout package repo
+        uses: actions/checkout@v4
+
+      - name: Fetch hub CI scripts
+        uses: actions/checkout@v4
+        with:
+          repository: nuvyntralabs/MauiEssentials
+          ref: main
+          path: .ci-tools
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -160,49 +174,39 @@ jobs:
           path: packages
           merge-multiple: true
 
+      - name: Download Windows packages
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nuget-*-Windows
+          path: packages-windows
+          merge-multiple: true
+
+      - name: Merge Windows TFMs into macOS nupkg
+        run: |
+          set -euo pipefail
+          script=".github/scripts/merge-windows-nupkg.py"
+          if [ ! -f "$script" ]; then
+            script=".ci-tools/.github/scripts/merge-windows-nupkg.py"
+          fi
+          if [ ! -f "$script" ]; then
+            echo "::error::merge-windows-nupkg.py not found"
+            exit 1
+          fi
+          python3 "$script" --mac packages --windows packages-windows
+
       - name: Push nupkg and snupkg
         env:
           NUGET_KEY: ${{ secrets.NUGET_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
         run: |
           set -euo pipefail
-          if [ -z "${NUGET_KEY}" ]; then
-            echo "::error::NUGET_KEY secret is empty. Add it under Settings → Secrets and variables → Actions."
+          script=".github/scripts/push-nuget-packages.py"
+          if [ ! -f "$script" ]; then
+            script=".ci-tools/.github/scripts/push-nuget-packages.py"
+          fi
+          if [ ! -f "$script" ]; then
+            echo "::error::push-nuget-packages.py not found"
             exit 1
           fi
-          if [ ! -d packages ]; then
-            echo "::error::No macOS NuGet artifacts were downloaded."
-            exit 1
-          fi
-          mapfile -t nupkgs < <(find packages -type f -name '*.nupkg' ! -name '*.snupkg' | sort)
-          mapfile -t snupkgs < <(find packages -type f -name '*.snupkg' | sort)
-          if [ ${#nupkgs[@]} -eq 0 ]; then
-            echo "::error::No .nupkg files found in macOS artifacts."
-            find packages -type f | sort
-            exit 1
-          fi
-          if [ ${#snupkgs[@]} -eq 0 ]; then
-            echo "::error::No .snupkg files found in macOS artifacts."
-            find packages -type f | sort
-            exit 1
-          fi
-          echo "Packages to push:"
-          find packages -type f \( -name '*.nupkg' -o -name '*.snupkg' \) | sort | sed 's/^/  /'
-          for pkg in "${nupkgs[@]}"; do
-            dir="$(dirname "$pkg")"
-            base="$(basename "$pkg" .nupkg)"
-            symbol="${dir}/${base}.snupkg"
-            if [ ! -f "$symbol" ]; then
-              echo "::error::Missing symbol package for ${pkg}: ${symbol}"
-              exit 1
-            fi
-            echo "Pushing ${pkg}"
-            dotnet nuget push "$pkg" \
-              --api-key "$NUGET_KEY" \
-              --source https://api.nuget.org/v3/index.json \
-              --skip-duplicate
-            echo "Pushing ${symbol}"
-            dotnet nuget push "$symbol" \
-              --api-key "$NUGET_KEY" \
-              --source https://api.nuget.org/v3/index.json \
-              --skip-duplicate
-          done
+          python3 "$script" --packages-dir packages
